@@ -6,12 +6,12 @@ services:
       context: .
       dockerfile: Dockerfile.deploy
     container_name: dj_tmp_web
-    command: gunicorn core.wsgi:application --bind 0.0.0.0:8001
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./app:/app/
       - ./app/static:/app/static/
     expose:
-      - 8001
+      - 8000
     env_file:
       - .env
     depends_on:
@@ -32,6 +32,6 @@ services:
     volumes:
       - ./app/static:/app/static/
     ports:
-      - 8001:80
+      - 8000:80
     depends_on:
       - web
